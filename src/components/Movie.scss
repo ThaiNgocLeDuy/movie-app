@@ -4,9 +4,18 @@
     padding: 0;
 }
 
+.App {
+    background-color: aliceblue;
+}
+
 .container {
-    height: 60px;
-    padding: 15px 0;
+    height: 125px;
+    padding: 15px 20px;
+    background-color: white;
+
+    position: sticky;
+    top: 0;
+    z-index: 11;
 
     .row {
         justify-content: space-between;
@@ -37,9 +46,31 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                    padding: 1rem 2rem;
+                    
+                    background-color: white;
+                    position: relative;
+
+                    border: 1px solid #555;
+                    border-radius: 8px;
 
                     .my_fav_poster {
                         width: 30%;
+                    }
+
+                    ::after {
+                        content: "";
+                        width: 20px;
+                        height: 20px;
+                        background-color: white;
+
+                        position: absolute;
+                        top: -11px;
+                        left: 50%;
+                        border-top: 1px solid #555;
+                        border-left: 1px solid #555;
+
+                        transform: rotate(45deg);
                     }
                 }
             }

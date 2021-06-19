@@ -48,18 +48,27 @@ function App() {
     console.log(movie);
     const newFav = [...fav, movie];
     setFav(newFav);
-    console.log(newFav);
+    // console.log(newFav);
+  };
+
+  const handleRemoveFavourite = (movie) => {
+    const index = fav.findIndex(x => x.imdbID === movie.imdbID);
+    if (index < 0) return;
+    const newFav = [...fav];
+    newFav.splice(index, 1);
+    setFav(newFav);
   }
+
   return (
     <div className="App">
-      <div className="container">
+      <div className="container container-fluid">
         <div className="row">
           <div className="header_logo">
             <img className="logo img-fluid" src={logo} alt="logo" />
           </div>
           <div className="header_form">
             <div className="form">
-              <form onSubmit={handleSubmit} className="form__group field">
+              <form autoComplete="off" onSubmit={handleSubmit} className="form__group field">
                 <input
                   type="input"
                   className="form__field"
@@ -81,13 +90,10 @@ function App() {
             onMouseEnter={handleMouseHover}
             onMouseLeave={handleMouseHover}
           >
-            Your Subscribe ❤💛💚🧡
-            {/* <div className="card_sbc">
-                <SubcribeMovie myFav={fav} />
-            </div> */}
+            Your Subscribe 💛💚🧡
             {isHover && (
               <div className="card_sbc">
-                <SubcribeMovie myFav={fav} />
+                <SubcribeMovie myFav={fav} removeFavourite={handleRemoveFavourite} />
               </div>
             )}
           </div>
